@@ -1,6 +1,5 @@
 devtools::load_all(export_all = FALSE)
 
-
 # create ct_cz xwalk
 ct_county_xwalk
 library(sf)
@@ -74,5 +73,19 @@ ct_cz_overlap %>%
   filter(GEOID10 %in% tmp)
 
 # drop geometry and add to package
-ct_cz_xwalk <- ct_cz_overlap %>% data.frame() %>% select(tract.geoid = 1, 2)
-usethis::use_data(ct_cz_xwalk)
+ct_cz_xwalk <- ct_cz_overlap %>% data.frame() %>% select(tract = 1, 2)
+
+# put geoid into format that matches nhgis and what i use elsewhere that
+# involves putting a 0 after the state and county identifiers and adding a "G"
+# in the beginning
+#glimpse(ct_cz_xwalk)
+#geoseg::cts %>% filter(cz == 27503 & county == 165) %>% select(1:6)
+ct_cz_xwalk <- ct_cz_xwalk %>%
+  rename(tract = tract.geoid) %>%
+  mutate(tract = paste0("G",
+                        substr(tract, 1,2), "0",
+                        substr(tract, 3,5), "0",
+                        substr(tract, 6,11)))
+
+
+# usethis::use_data(ct_cz_xwalk, overwrite = TRUE)
