@@ -49,14 +49,15 @@ cts %>%
           fill = NA) +
   scale_color_discrete()
 
-# two tracts that were made in places incorporated or altered 1990
+# two tracts that were made in places incorporated or altered since 1990
 
 # first one 06047002402 is in Merced, CA; i assign it to 37000 because Merced is
-# in that CZ sources: https://usa.ipums.org/usa/volii/1990lma.shtml &
+# in that CZ. Sources: https://usa.ipums.org/usa/volii/1990lma.shtml &
 # https://censusreporter.org/profiles/14000US06047002402-census-tract-2402-merced-ca/
 
 # the second one  08014031400 in Broomfield, CO; i assign this to the
-# Denver-Aurora area 28900 because broomfield was assigned to that metro area
+# Denver-Aurora area 28900 because broomfield was assigned to that metro area.
+# (Brookfield county was formed in 2001 after seceded from Boulder county)
 
 
 # assign split CTs -------------------------------------------------------
