@@ -1,16 +1,17 @@
 Package: xwalks
 Type: Package
-Title: Currently just a helper function for calculating geographic correspondence (crosswalks)
+Title: Helper function for calculating geographic correspondence (crosswalks) and a set of bundled xwalks for selected areas.
 Version: 0.1.0
 Author: Kira McDonald
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Maintainer: Kira McDonald <kira.mcd.99@gmail.com>
+Description: Helper function for calculating geographic correspondence (crosswalks) and a set of bundled xwalks for selected areas.
 License: What license is it under?
-Imports: sf,
-         dplyr
+Imports:
+  dplyr,
+  lwgeom,
+  sf
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Depends: 
     R (>= 2.10)
