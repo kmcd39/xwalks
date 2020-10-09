@@ -5,7 +5,7 @@
 \alias{state2div}
 \title{state2div}
 \format{
-An object of class \code{data.frame} with 51 rows and 4 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 51 rows and 7 columns.
 }
 \usage{
 state2div
