@@ -1,6 +1,7 @@
 ## code to prepare `co2cz` dataset here
 # adapts county xwalk from https://github.com/walkerke/us-boundaries/blob/master/cz_1990_v2_sp.R
 library(dplyr)
+rm(list = ls())
 
 # FIPS codes for counties deleted since 1990 census
 counties_deleted <- c(
