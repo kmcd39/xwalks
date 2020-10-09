@@ -1,2 +1,2 @@
 # xwalks
-Currently just a helper function for calculating geographic correspondence (crosswalks)
+Helper functions for calculating geographic correspondence (crosswalks) and a set of bundled xwalks for selected areas.
