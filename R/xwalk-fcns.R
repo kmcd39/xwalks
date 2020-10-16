@@ -79,8 +79,8 @@ get.spatial.overlap <- function(sf1, sf2,
              as.numeric(int.area) /
              as.numeric(area_1)) %>%
     filter(perc.area > filter.threshold) %>%
-    select(c(all_of(sf1.title),
-             all_of(sf2.title),
+    select(c(all_of(sf1.identifier),
+             all_of(sf2.identifier),
              "perc.area"))
 
   return(overlap.index)
