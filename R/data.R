@@ -5,11 +5,11 @@
 #' https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf
 "state2div"
 
-
-#' ct_cbsa_xwalk
+#' ctx
 #'
-#' Unique row/ct with xwalk to cbsas **i should double-check this one
-"ct_cbsa_xwalk"
+#' Xwalk from 2010 census tracts to 2015 counties, 2019 cbsas, and 1990 czs
+ctx
+
 
 #' co2cz
 #'
