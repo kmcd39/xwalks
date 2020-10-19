@@ -15,8 +15,6 @@
 #'   cases, the smaller geometry is known to be smaller, but its spatial
 #'   representation may not actually be). This step can be very computationally
 #'   expensive for larger areas
-#' @param keep.geometries whether to return an sf object, with small-area
-#'   geometries retained, or a tibble, with them dropped
 #' @import sf dplyr
 #' @export
 generate.coterminous.xwalk <- function(smaller.geo, larger.geo, trim.smaller = F) {
