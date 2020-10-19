@@ -14,10 +14,14 @@ same size as the other)}
 \item{larger.geo}{sf object containing larger geos.}
 
 \item{trim.smaller}{Whether or not to trim smaller geos to combined area of
-all larger ones. Necessary for example if larger geos are clipped to water lines or
-otherwise trimmed, and the smaller ones are not. (In these cases, the smaller
-geometry is known to be smaller, but its spatial representation may not
-actually be)}
+all larger ones. Necessary, for example, if larger geos are clipped to
+water lines or otherwise trimmed, and the smaller ones are not. (In these
+cases, the smaller geometry is known to be smaller, but its spatial
+representation may not actually be). This step can be very computationally
+expensive for larger areas}
+
+\item{keep.geometries}{whether to return an sf object, with small-area
+geometries retained, or a tibble, with them dropped}
 }
 \description{
 If two regions are known to be co-terminous, this will generate a xwalk

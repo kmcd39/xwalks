@@ -23,15 +23,15 @@ object}
 \item{sf2.identifier}{colname as string for region identifiers for second sf
 object}
 
-\item{filter.threshold}{percent overlap between sf1 and sf2, as decimal, below which to trim
-results before returning.}
+\item{filter.threshold}{percent overlap between sf1 and sf2, as decimal,
+below which to trim results before returning.}
 }
 \description{
-This takes intersections btwn two sf objects and filters out areas
-combinations where the intersect area is below \code{filter.threshold}
-percent of the first sf. Returns a table with the percent intersection of
-each area. Filters out boundary cases where the intersection is a fraction of
-a percent of total area. Filter threshold takes out edge cases (when they
-touch but don't overlap or where low res shapefile would lead to mis-read).
-By default this is very low.
+Calculates the % overlap between two geographies. Takes two sf objects, a
+unique/row identifier column for each; returns a row for each combination of
+rows in the input sfs that intersect with one another with a column for the
+percent overlap. % overlap can indicate true overlap, or it can be an
+artifact of differing resolutions between the shapefiles or other artifacts
+of their representation. Filtering to geometries below a very small % overlap
+using \code{filter.threshold} or otherwise can remove these slivers.
 }
