@@ -10,10 +10,14 @@
 #'   same size as the other)
 #' @param larger.geo sf object containing larger geos.
 #' @param trim.smaller Whether or not to trim smaller geos to combined area of
-#'   all larger ones. Necessary for example if larger geos are clipped to water lines or
-#'   otherwise trimmed, and the smaller ones are not. (In these cases, the smaller
-#'   geometry is known to be smaller, but its spatial representation may not
-#'   actually be)
+#'   all larger ones. Necessary, for example, if larger geos are clipped to
+#'   water lines or otherwise trimmed, and the smaller ones are not. (In these
+#'   cases, the smaller geometry is known to be smaller, but its spatial
+#'   representation may not actually be). This step can be very computationally
+#'   expensive for larger areas
+#' @param keep.geometries whether to return an sf object, with small-area
+#'   geometries retained, or a tibble, with them dropped
+#' @import sf dplyr
 #' @export
 generate.coterminous.xwalk <- function(smaller.geo, larger.geo, trim.smaller = F) {
   require(sf)
@@ -27,30 +31,32 @@ generate.coterminous.xwalk <- function(smaller.geo, larger.geo, trim.smaller = F
   }
   #
   if(trim.smaller)
-    smaller.geo <- st_intersection(smaller.geo, st_union(larger.geo))
+    smaller.geo <- st_intersection(smaller.geo # might be more efficient way of doing this
+                                   , st_union(larger.geo))
 
   pts <- st_point_on_surface(smaller.geo)
   out <- st_join(pts, larger.geo)
+
   out %>% tibble() %>% select(-geometry)
 }
 
 #' get.spatial.overlap
 #'
-#' This takes intersections btwn two sf objects and filters out areas
-#' combinations where the intersect area is below \code{filter.threshold}
-#' percent of the first sf. Returns a table with the percent intersection of
-#' each area. Filters out boundary cases where the intersection is a fraction of
-#' a percent of total area. Filter threshold takes out edge cases (when they
-#' touch but don't overlap or where low res shapefile would lead to mis-read).
-#' By default this is very low.
+#' Calculates the % overlap between two geographies. Takes two sf objects, a
+#' unique/row identifier column for each; returns a row for each combination of
+#' rows in the input sfs that intersect with one another with a column for the
+#' percent overlap. % overlap can indicate true overlap, or it can be an
+#' artifact of differing resolutions between the shapefiles or other artifacts
+#' of their representation. Filtering to geometries below a very small % overlap
+#' using \code{filter.threshold} or otherwise can remove these slivers.
 #' @param sf1 First sf object
 #' @param sf2 Second sf object
 #' @param sf1.identifier colname as string for region identifiers for first sf
 #'   object
 #' @param sf2.identifier colname as string for region identifiers for second sf
 #'   object
-#' @param filter.threshold percent overlap between sf1 and sf2, as decimal, below which to trim
-#'   results before returning.
+#' @param filter.threshold percent overlap between sf1 and sf2, as decimal,
+#'   below which to trim results before returning.
 #' @import sf dplyr lwgeom
 #' @export
 get.spatial.overlap <- function(sf1, sf2,
@@ -69,11 +75,16 @@ get.spatial.overlap <- function(sf1, sf2,
   # get intersecting areas
   intersection <- st_intersection(sf1,
                                   sf2)
+
+  # just keep geometries, if other geometry types were created in intersect
+  # group appropriately & calculate intersections / whole
+  intersection <- intersection %>%
+    st_collection_extract("POLYGON")
+
   # calculate areas
   intersection$int.area <-
     st_geod_area(intersection$geometry)
 
-  # group appropriately & calculate intersections / whole
   overlap.index <- intersection %>%
     mutate(perc.area = # % sf 1 contained in intersection area
              as.numeric(int.area) /
