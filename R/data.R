@@ -13,8 +13,14 @@
 
 #' co2cz
 #'
-#' Unique row/county with xwalk to cz and state.
+#' 2015 counties w/ unique row/county with xwalk to cz and state.
 "co2cz"
+
+#' cts2counties_time.series
+#'
+#' Correspondence from census tracts to counties at different years
+"cts2counties_time.series"
+
 
 #' czip
 #'

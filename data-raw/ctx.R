@@ -136,6 +136,10 @@ purrr::map(ctx, ~sum(is.na(.)))
 
 ctx
 
+# ensure convenient organization -----------------------------------------------
+
+
+
 # write -------------------------------------------------------------------
 
 usethis::use_data(ctx
