@@ -48,7 +48,7 @@ cts2counties_time.series <-
   select(
     statefp = statefp.2015,
     countyfp.2015,
-    counfyfp.2010 = COUNTYFP10,
+    countyfp.2010 = COUNTYFP10,
     tractce = tractce.2015,
     namelsad10 = NAMELSAD10
   )
