@@ -11,6 +11,6 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 co2cz
 }
 \description{
-Unique row/county with xwalk to cz and state.
+2015 counties w/ unique row/county with xwalk to cz and state.
 }
 \keyword{datasets}
