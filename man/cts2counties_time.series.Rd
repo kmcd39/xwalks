@@ -5,7 +5,7 @@
 \alias{cts2counties_time.series}
 \title{cts2counties_time.series}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 74133 rows and 7 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 79007 rows and 4 columns.
 }
 \usage{
 cts2counties_time.series
