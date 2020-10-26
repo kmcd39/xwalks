@@ -18,8 +18,17 @@
 
 #' cts2counties_time.series
 #'
-#' Correspondence from census tracts to counties at different years
-"cts2counties_time.series"
+#' Correspondence from census tracts to counties at different years. Important note:
+#' Two census tracts were split from 2010-2015 (in Alaska). The tract geoid for these
+#' for 2015 are: 02195000200 & 02198000100. If merging, this will cause duplicates
+#' for information pertaining to these two tracts.
+#'
+#' From Census Bureau, The part of 02105000300 that became 02195000200 has estimated
+#' detached population of 1; and the part of 02195000200 that became 02198000100 has
+#' estimated added population of 613.
+#'
+#' https://www.census.gov/programs-surveys/geography/technical-documentation/county-changes.2010.html
+"cts2cts_time.series"
 
 
 #' czip
