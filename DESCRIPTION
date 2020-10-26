@@ -1,6 +1,6 @@
 Package: xwalks
 Type: Package
-Title: Helper function for calculating geographic correspondence (crosswalks) and a set of bundled xwalks for selected areas.
+Title: Helper function for calculating geographic correspondence (crosswalks) and a set of bundled xwalks for selected areas
 Version: 0.1.0
 Author: Kira McDonald
 Maintainer: Kira McDonald <kira.mcd.99@gmail.com>
