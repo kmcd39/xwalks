@@ -11,6 +11,6 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 ctx
 }
 \description{
-Xwalk from 2010 census tracts to 2015 counties, 2019 cbsas, and 1990 czs
+Xwalk from 2015 census tracts to 2015 counties, 2019 cbsas, and 1990 czs
 }
 \keyword{datasets}

@@ -61,7 +61,8 @@ v2[! v2 %in% v1 ]
 
 # years must be different
 # or newer method better
-library(mapview)'
+library(mapview)
+'
 check[! v1 %in% v2 ,] %>%
   count(cbsa_id)
 
