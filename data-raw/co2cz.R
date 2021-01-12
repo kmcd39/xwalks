@@ -62,8 +62,9 @@ co2cz <- co2cz %>%
   select( countyfp = 1
          ,cz = 2
          ,cz_name = 3
-         ,4)
+         )
 
-co2cz
+co2cz$statefp = substr(co2cz$countyfp, 1, 2)
+
 
 usethis::use_data(co2cz, overwrite = TRUE)
