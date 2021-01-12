@@ -17,7 +17,8 @@
 #'   expensive for larger areas
 #' @import sf dplyr
 #' @export
-generate.coterminous.xwalk <- function(smaller.geo, larger.geo, trim.smaller = F) {
+generate.coterminous.xwalk <- function(smaller.geo, larger.geo, keep.geometry = T,
+                                       trim.smaller = F) {
   require(sf)
   require(dplyr)
 
@@ -35,7 +36,11 @@ generate.coterminous.xwalk <- function(smaller.geo, larger.geo, trim.smaller = F
   pts <- st_point_on_surface(smaller.geo)
   out <- st_join(pts, larger.geo)
 
-  out %>% tibble() %>% select(-geometry)
+  if(keep.geometry)
+    return(out)
+
+  out <- tibble(out) %>% select(-geometry)
+  return(out)
 }
 
 #' get.spatial.overlap
