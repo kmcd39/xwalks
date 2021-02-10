@@ -67,4 +67,7 @@ co2cz <- co2cz %>%
 co2cz$statefp = substr(co2cz$countyfp, 1, 2)
 
 
+# write ------------------------------------------------------------------------
+
+
 usethis::use_data(co2cz, overwrite = TRUE)

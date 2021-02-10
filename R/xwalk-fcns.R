@@ -69,8 +69,8 @@ get.spatial.overlap <- function(sf1, sf2,
   require(sf)
   require(lwgeom)
   # set to long-lat crs
-  sf1 = sf1 %>% st_transform(4326)
-  sf2 = sf2 %>% st_transform(4326)
+  sf1 <- sf1 %>% st_transform(4326)
+  sf2 <- sf2 %>% st_transform(4326)
 
   # add areas to each sf object
   sf1$area_1 <- st_geod_area(sf1)

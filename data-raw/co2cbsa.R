@@ -1,18 +1,23 @@
 library(sf)
 library(tidyverse)
-
+rm(list = ls())
 # co2cbsa --------------------------------------------------------------------
 
 
-tmp <- xwalks::ctx %>%
-  select(-c(tractce, geoid)) %>%
-  distinct() %>%
+co2cbsa <- xwalks::ctx %>%
+  select(-c(tractce, geoid,
+            contains("cz"))) %>%
   filter(!is.na(cbsa)) %>%
+    distinct() %>%
   arrange(cbsa)
 
-# confirmign cbsas coterminous w counties
-tmp %>%
-  count(statefp, countyfp) %>%
-  arrange(desc(n))
+co2cbsa$countyfp <- paste0(co2cbsa$statefp,
+                         co2cbsa$countyfp)
 
-tmp
+co2cbsa
+
+
+# write ------------------------------------------------------------------------
+
+usethis::use_data(co2cbsa,
+                  overwrite = T)
