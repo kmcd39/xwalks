@@ -16,6 +16,16 @@
 #' 2015 counties w/ unique row/county with xwalk to cz and state.
 "co2cz"
 
+#' co2cbsa
+#'
+#' 2015 counties w/ unique row/county with xwalk to 2019 cbsa and state.
+"co2cz"
+
+#' cbg2plc
+#'
+#' 2019 Places with >= 100,000 population, joined with 2019 census block groups
+"cbg2plc"
+
 #' cts2counties_time.series
 #'
 #' Correspondence from census tracts to counties at different years. Important note:
@@ -30,6 +40,13 @@
 #' https://www.census.gov/programs-surveys/geography/technical-documentation/county-changes.2010.html
 "cts2cts_time.series"
 
+
+
+#' plc.co.cz
+#'
+#' Correspondences between 2019 Places where population >= 100,000, with 1990 CZs, and 2015 counties. Percentage
+#' overlap is included because in rare cases, Places span counties and/or CZs.
+"plc.co.cz"
 
 #' czip
 #'
