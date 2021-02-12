@@ -4,7 +4,12 @@
 \alias{generate.coterminous.xwalk}
 \title{generate.coterminous.xwalk}
 \usage{
-generate.coterminous.xwalk(smaller.geo, larger.geo, trim.smaller = F)
+generate.coterminous.xwalk(
+  smaller.geo,
+  larger.geo,
+  keep.geometry = T,
+  trim.smaller = F
+)
 }
 \arguments{
 \item{smaller.geo}{sf object containing the smaller geometries. (Because this

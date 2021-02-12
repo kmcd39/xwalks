@@ -6,11 +6,17 @@
 \title{co2cz}
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 3142 rows and 4 columns.
+
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 3142 rows and 4 columns.
 }
 \usage{
+co2cz
+
 co2cz
 }
 \description{
 2015 counties w/ unique row/county with xwalk to cz and state.
+
+2015 counties w/ unique row/county with xwalk to 2019 cbsa and state.
 }
 \keyword{datasets}
