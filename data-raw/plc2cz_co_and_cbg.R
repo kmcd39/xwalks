@@ -109,6 +109,8 @@ cbg2plc <-
     perc.overlap = perc.area
     )
 
+cbg2plc$perc.overlap <-
+  round(cbg2plc$perc.overlap * 100) %>% as.integer()
 
 # write
 usethis::use_data(cbg2plc, overwrite=T)
