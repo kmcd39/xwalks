@@ -4,7 +4,9 @@ library(tidyverse)
 
 # get all places ---------------------------------------------------------------
 
-state_list <- xwalks::state2div$statefp %>% unique()
+state_list <-
+  xwalks::state2div$statefp %>% unique()
+
 plcs <-
   map(state_list,
       ~tigris::places(.,

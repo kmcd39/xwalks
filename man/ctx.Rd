@@ -5,7 +5,7 @@
 \alias{ctx}
 \title{ctx}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 74133 rows and 8 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 74133 rows and 7 columns.
 }
 \usage{
 ctx
