@@ -64,13 +64,14 @@ generate.coterminous.xwalk <- function(smaller.geo, larger.geo, keep.geometry = 
 #' @export
 get.spatial.overlap <- function(sf1, sf2,
                                 sf1.identifier, sf2.identifier
-                                , filter.threshold = 0.01) {
+                                , filter.threshold = 0.01
+                                , crs = "+proj=lcc +lon_0=-90 +lat_1=33 +lat_2=45") {
   require(dplyr)
   require(sf)
   require(lwgeom)
   # set to long-lat crs
-  sf1 <- sf1 %>% st_transform(4326)
-  sf2 <- sf2 %>% st_transform(4326)
+  sf1 <- sf1 %>% st_transform(crs)
+  sf2 <- sf2 %>% st_transform(crs)
 
   # add areas to each sf object
   sf1$area_1 <- st_geod_area(sf1)
@@ -91,7 +92,10 @@ get.spatial.overlap <- function(sf1, sf2,
   overlap.index <- intersection %>%
     mutate(perc.area = # % sf 1 contained in intersection area
              as.numeric(int.area) /
-             as.numeric(area_1)) %>%
+             as.numeric(area_1))
+
+  # filter based on % size minimum and retain only IDs
+  overlap.index <- overlap.index %>%
     filter(perc.area > filter.threshold) %>%
     select(c(all_of(sf1.identifier),
              all_of(sf2.identifier),
