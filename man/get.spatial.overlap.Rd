@@ -9,7 +9,8 @@ get.spatial.overlap(
   sf2,
   sf1.identifier,
   sf2.identifier,
-  filter.threshold = 0.01
+  filter.threshold = 0.01,
+  crs = "+proj=lcc +lon_0=-90 +lat_1=33 +lat_2=45"
 )
 }
 \arguments{

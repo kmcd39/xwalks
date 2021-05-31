@@ -2,6 +2,7 @@
 
 export(generate.coterminous.xwalk)
 export(get.spatial.overlap)
+export(x2cos)
 import(dplyr)
 import(lwgeom)
 import(sf)

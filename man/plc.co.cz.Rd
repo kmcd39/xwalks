@@ -11,7 +11,8 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 plc.co.cz
 }
 \description{
-Correspondences between 2019 Places where population >= 100,000, with 1990 CZs, and 2015 counties. Percentage
-overlap is included because in rare cases, Places span counties and/or CZs.
+Correspondences between 2019 Places where population >= 100,000, with 1990 CZs,
+and 2015 counties. Percentage overlap is included because in rare cases, Places
+span counties and/or CZs.
 }
 \keyword{datasets}
