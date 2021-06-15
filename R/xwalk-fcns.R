@@ -52,6 +52,7 @@ generate.coterminous.xwalk <- function(smaller.geo, larger.geo, keep.geometry = 
 #' artifact of differing resolutions between the shapefiles or other artifacts
 #' of their representation. Filtering to geometries below a very small % overlap
 #' using \code{filter.threshold} or otherwise can remove these slivers.
+#'
 #' @param sf1 First sf object
 #' @param sf2 Second sf object
 #' @param sf1.identifier colname as string for region identifiers for first sf
@@ -61,7 +62,8 @@ generate.coterminous.xwalk <- function(smaller.geo, larger.geo, keep.geometry = 
 #' @param filter.threshold percent overlap between sf1 and sf2, as decimal,
 #'   below which to trim results before returning.
 #' @import sf dplyr lwgeom
-#' @export
+#'
+#' @export get.spatial.overlap
 get.spatial.overlap <- function(sf1, sf2,
                                 sf1.identifier, sf2.identifier
                                 , filter.threshold = 0.01
@@ -74,8 +76,8 @@ get.spatial.overlap <- function(sf1, sf2,
   sf2 <- sf2 %>% st_transform(crs)
 
   # add areas to each sf object
-  sf1$area_1 <- st_geod_area(sf1)
-  sf2$area_2 <- st_geod_area(sf2)
+  sf1$area_1 <- st_area(sf1)
+  sf2$area_2 <- st_area(sf2)
   # get intersecting areas
   intersection <- st_intersection(sf1,
                                   sf2)
@@ -87,12 +89,12 @@ get.spatial.overlap <- function(sf1, sf2,
 
   # calculate areas
   intersection$int.area <-
-    st_geod_area(intersection$geometry)
+    st_area(intersection$geometry)
 
   overlap.index <- intersection %>%
     mutate(perc.area = # % sf 1 contained in intersection area
              as.numeric(int.area) /
-             as.numeric(area_1))
+             as.numeric(area_1) )
 
   # filter based on % size minimum and retain only IDs
   overlap.index <- overlap.index %>%
