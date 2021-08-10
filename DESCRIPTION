@@ -7,7 +7,7 @@ Maintainer: Kira McDonald <kira.mcd.99@gmail.com>
 Description: Helper function for calculating geographic correspondence (crosswalks) and a set of bundled xwalks for selected areas.
 License: What license is it under?
 Imports:
-  dplyr,
+  tidyverse,
   lwgeom,
   sf
 Encoding: UTF-8

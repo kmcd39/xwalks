@@ -13,7 +13,7 @@
 
 #' co2cz
 #'
-#' 2015 counties w/ unique row/county with xwalk to cz and state.
+#' 2015 counties w/ unique row/county with xwalk to state and 1990 cz.
 "co2cz"
 
 #' co2cbsa

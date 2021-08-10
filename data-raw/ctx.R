@@ -3,11 +3,11 @@ library(tidyverse)
 library(sf)
 rm(list = ls())
 
+# state list
 stateL <- xwalks::state2div %>% pull(statefp)
 
 # generate by using tract IDs to get counties and then matching those to co2cz and
 # co2cbsa
-
 cts <- purrr::map_dfr( stateL
                        , ~tigris::tracts( state = .
                                           , cb = F
